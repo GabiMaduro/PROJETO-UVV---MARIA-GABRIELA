@@ -1,0 +1,38 @@
+@model CadastroViewModel
+@{
+    ViewData["Title"] = "Criar conta";
+}
+<section class="auth-shell">
+    <div class="form-card">
+        <div class="form-heading">
+            <span class="eyebrow">Primeiro acesso</span>
+            <h1>Crie sua conta</h1>
+            <p>Preencha seus dados para começar a organizar suas consultas.</p>
+        </div>
+        <form asp-action="Cadastro" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+            <div class="field">
+                <label asp-for="Nome"></label>
+                <input asp-for="Nome" autocomplete="name" placeholder="Seu nome completo" />
+                <span asp-validation-for="Nome" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" autocomplete="email" placeholder="voce@email.com" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Senha"></label>
+                <input asp-for="Senha" autocomplete="new-password" placeholder="Mínimo de 6 caracteres" />
+                <span asp-validation-for="Senha" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="ConfirmarSenha"></label>
+                <input asp-for="ConfirmarSenha" autocomplete="new-password" />
+                <span asp-validation-for="ConfirmarSenha" class="field-error"></span>
+            </div>
+            <button class="button button-full" type="submit">Criar conta</button>
+        </form>
+        <p class="form-footer">Já possui uma conta? <a asp-action="Login">Entrar</a></p>
+    </div>
+</section>

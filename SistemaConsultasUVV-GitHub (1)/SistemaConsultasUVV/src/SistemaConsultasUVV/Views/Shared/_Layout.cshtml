@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Consultas UVV</title>
+    <meta name="description" content="Sistema acadêmico para gerenciamento seguro de consultas." />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container nav" aria-label="Navegação principal">
+            <a class="brand" asp-controller="Home" asp-action="Index">
+                <span class="brand-mark">UVV</span>
+                <span>Consultas</span>
+            </a>
+            <div class="nav-links">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Consultas" asp-action="Index">Minhas consultas</a>
+                    <span class="user-name">Olá, @User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="link-button">Sair</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login">Entrar</a>
+                    <a class="button button-small" asp-controller="Account" asp-action="Cadastro">Criar conta</a>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        @if (TempData["Sucesso"] is string mensagem)
+        {
+            <div class="alert alert-success" role="status">@mensagem</div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <span>© @DateTime.Now.Year Sistema de Consultas UVV</span>
+            <span>Projeto acadêmico · ASP.NET Core MVC</span>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

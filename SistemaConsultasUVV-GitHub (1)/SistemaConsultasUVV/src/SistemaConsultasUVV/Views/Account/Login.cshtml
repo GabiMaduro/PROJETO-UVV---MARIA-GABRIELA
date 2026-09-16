@@ -1,0 +1,30 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Entrar";
+}
+<section class="auth-shell">
+    <div class="form-card">
+        <div class="form-heading">
+            <span class="eyebrow">Área do usuário</span>
+            <h1>Bem-vindo(a) de volta</h1>
+            <p>Entre para acessar suas consultas.</p>
+        </div>
+        <form asp-action="Login" method="post" novalidate>
+            <input asp-for="ReturnUrl" type="hidden" />
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+            <div class="field">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" autocomplete="email" placeholder="voce@email.com" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+            <div class="field">
+                <label asp-for="Senha"></label>
+                <input asp-for="Senha" autocomplete="current-password" />
+                <span asp-validation-for="Senha" class="field-error"></span>
+            </div>
+            <label class="checkbox"><input asp-for="LembrarMe" /> <span>Manter conectado neste dispositivo</span></label>
+            <button class="button button-full" type="submit">Entrar</button>
+        </form>
+        <p class="form-footer">Ainda não possui uma conta? <a asp-action="Cadastro">Cadastre-se</a></p>
+    </div>
+</section>

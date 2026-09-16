@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Início";
+}
+
+<section class="hero">
+    <div class="hero-copy">
+        <span class="eyebrow">Organização simples e segura</span>
+        <h1>Suas consultas em um só lugar.</h1>
+        <p>Cadastre, acompanhe e gerencie seus agendamentos com praticidade e acesso protegido.</p>
+        <div class="hero-actions">
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a class="button" asp-controller="Consultas" asp-action="Index">Ver minhas consultas</a>
+                <a class="button button-secondary" asp-controller="Consultas" asp-action="Criar">Nova consulta</a>
+            }
+            else
+            {
+                <a class="button" asp-controller="Account" asp-action="Cadastro">Criar minha conta</a>
+                <a class="button button-secondary" asp-controller="Account" asp-action="Login">Já tenho uma conta</a>
+            }
+        </div>
+    </div>
+    <div class="hero-card" aria-hidden="true">
+        <div class="calendar-top"><span></span><span></span></div>
+        <div class="calendar-date">18</div>
+        <strong>Consulta agendada</strong>
+        <p>Cardiologia · 09:30</p>
+        <span class="status">Confirmada</span>
+    </div>
+</section>
+
+<section class="features" aria-label="Recursos do sistema">
+    <article><span class="feature-icon">✓</span><h2>Acesso protegido</h2><p>Cada usuário visualiza e altera somente os próprios registros.</p></article>
+    <article><span class="feature-icon">↻</span><h2>Gestão completa</h2><p>Crie, consulte, edite ou exclua seus agendamentos.</p></article>
+    <article><span class="feature-icon">⌁</span><h2>Informações claras</h2><p>Especialidade, data, horário e descrição em uma visualização simples.</p></article>
+</section>

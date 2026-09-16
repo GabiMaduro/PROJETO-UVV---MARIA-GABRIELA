@@ -1,0 +1,14 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Erro";
+}
+<section class="empty-state">
+    <div class="empty-icon">!</div>
+    <h1>Não foi possível concluir a operação.</h1>
+    <p>Tente novamente. Se o problema persistir, informe o código abaixo ao responsável.</p>
+    @if (Model.ShowRequestId)
+    {
+        <p><strong>Código:</strong> <code>@Model.RequestId</code></p>
+    }
+    <a class="button" asp-controller="Home" asp-action="Index">Voltar ao início</a>
+</section>

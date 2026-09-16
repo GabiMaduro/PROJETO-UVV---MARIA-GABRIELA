@@ -1,0 +1,17 @@
+@model Consulta
+@{
+    ViewData["Title"] = "Excluir consulta";
+}
+<section class="details-card danger-card">
+    <div class="empty-icon danger">!</div>
+    <h1>Excluir esta consulta?</h1>
+    <p>Esta ação removerá permanentemente o agendamento abaixo.</p>
+    <dl class="details-list">
+        <div><dt>Especialidade</dt><dd>@Model.Especialidade</dd></div>
+        <div><dt>Data e horário</dt><dd>@Model.DataHora.ToString("dd/MM/yyyy 'às' HH:mm")</dd></div>
+    </dl>
+    <form asp-action="Excluir" asp-route-id="@Model.Id" method="post" class="form-actions">
+        <a class="button button-secondary" asp-action="Index">Cancelar</a>
+        <button class="button button-danger" type="submit">Sim, excluir</button>
+    </form>
+</section>

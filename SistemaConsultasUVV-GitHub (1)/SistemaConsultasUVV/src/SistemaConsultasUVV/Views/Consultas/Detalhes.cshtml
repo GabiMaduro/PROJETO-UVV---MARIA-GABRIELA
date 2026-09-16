@@ -1,0 +1,13 @@
+@model Consulta
+@{
+    ViewData["Title"] = "Detalhes da consulta";
+}
+<section class="details-card">
+    <div class="details-header"><div><span class="eyebrow">Agendamento</span><h1>@Model.Especialidade</h1></div><span class="status">Agendada</span></div>
+    <dl class="details-list">
+        <div><dt>Data</dt><dd>@Model.DataHora.ToString("dd/MM/yyyy")</dd></div>
+        <div><dt>Horário</dt><dd>@Model.DataHora.ToString("HH:mm")</dd></div>
+        <div class="full"><dt>Descrição</dt><dd>@Model.Descricao</dd></div>
+    </dl>
+    <div class="form-actions"><a class="button button-secondary" asp-action="Index">Voltar</a><a class="button" asp-action="Editar" asp-route-id="@Model.Id">Editar consulta</a></div>
+</section>

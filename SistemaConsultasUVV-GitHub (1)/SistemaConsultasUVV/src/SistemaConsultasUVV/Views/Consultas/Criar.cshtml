@@ -1,0 +1,13 @@
+@model Consulta
+@{
+    ViewData["Title"] = "Nova consulta";
+}
+<section class="form-page">
+    <div class="form-card wide">
+        <div class="form-heading"><span class="eyebrow">Novo agendamento</span><h1>Cadastrar consulta</h1><p>Informe os dados do seu próximo atendimento.</p></div>
+        <form asp-action="Criar" method="post" novalidate>
+            <partial name="_ConsultaForm" model="Model" />
+            <div class="form-actions"><a class="button button-secondary" asp-action="Index">Cancelar</a><button class="button" type="submit">Salvar consulta</button></div>
+        </form>
+    </div>
+</section>

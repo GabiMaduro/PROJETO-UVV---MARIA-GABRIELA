@@ -1,0 +1,17 @@
+@model Consulta
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+<div class="field">
+    <label asp-for="Especialidade"></label>
+    <input asp-for="Especialidade" placeholder="Ex.: Cardiologia, Psicologia, Odontologia" />
+    <span asp-validation-for="Especialidade" class="field-error"></span>
+</div>
+<div class="field">
+    <label asp-for="DataHora"></label>
+    <input asp-for="DataHora" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+    <span asp-validation-for="DataHora" class="field-error"></span>
+</div>
+<div class="field">
+    <label asp-for="Descricao"></label>
+    <textarea asp-for="Descricao" rows="5" placeholder="Adicione informações importantes sobre a consulta"></textarea>
+    <span asp-validation-for="Descricao" class="field-error"></span>
+</div>

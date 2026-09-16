@@ -1,0 +1,39 @@
+@model IEnumerable<Consulta>
+@{
+    ViewData["Title"] = "Minhas consultas";
+}
+<div class="page-heading">
+    <div><span class="eyebrow">Painel do usuário</span><h1>Minhas consultas</h1><p>Acompanhe e gerencie seus próximos agendamentos.</p></div>
+    <a class="button" asp-action="Criar">+ Nova consulta</a>
+</div>
+
+@if (!Model.Any())
+{
+    <section class="empty-state compact">
+        <div class="empty-icon">+</div>
+        <h2>Nenhuma consulta cadastrada</h2>
+        <p>Cadastre seu primeiro agendamento para visualizá-lo aqui.</p>
+        <a class="button" asp-action="Criar">Cadastrar consulta</a>
+    </section>
+}
+else
+{
+    <div class="consultation-grid">
+        @foreach (var consulta in Model)
+        {
+            <article class="consultation-card">
+                <div class="date-badge"><strong>@consulta.DataHora.ToString("dd")</strong><span>@consulta.DataHora.ToString("MMM").ToUpper()</span></div>
+                <div class="consultation-content">
+                    <div class="card-top"><h2>@consulta.Especialidade</h2><span class="status">Agendada</span></div>
+                    <p class="consultation-time">@consulta.DataHora.ToString("dddd, dd/MM/yyyy 'às' HH:mm")</p>
+                    <p>@consulta.Descricao</p>
+                    <div class="card-actions">
+                        <a asp-action="Detalhes" asp-route-id="@consulta.Id">Detalhes</a>
+                        <a asp-action="Editar" asp-route-id="@consulta.Id">Editar</a>
+                        <a class="danger-link" asp-action="Excluir" asp-route-id="@consulta.Id">Excluir</a>
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+}
